@@ -3,7 +3,6 @@ from typing import List
 from towhee import pipe
 from langchain.schema.document import Document
 from langchain.chains.question_answering import load_qa_chain
-
 from common.hiTowhee import embedding_pipeline
 from common.hiMilvus import hiplot_doc_collection
 from llm.chatOpenAI import chat_openai
@@ -15,7 +14,7 @@ def get_documents(embedding) -> List[Document]:
         data=embedding,
         anns_field="embeddings",
         param=search_params,
-        limit=10,
+        limit=30,
         output_fields=["content"]
     )
     documents = []
@@ -24,6 +23,7 @@ def get_documents(embedding) -> List[Document]:
             content = hit.entity.get("content")
             doc = Document(page_content=content)
             documents.append(doc)
+    print(documents)
     return documents
 
 
@@ -31,6 +31,7 @@ def get_gpt_result(documents: List[Document], query: str) -> str:
     llm = chat_openai(0.5)
     chain = load_qa_chain(llm, chain_type="stuff")
     return chain.run(input_documents=documents, question=query)
+
 
 
 hiplot_doc_qa_pipeline = (

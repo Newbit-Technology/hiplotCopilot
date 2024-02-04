@@ -29,7 +29,7 @@ def get_description_str(description_filepath: dict, limit: int = 4096) -> str:
             meta_json = json.load(f)
             new_json_dict = {
                 "name": meta_json["name"],
-                "alias": meta_json["alias"],
+                "alias": meta_json.get("alias",meta_json["name"]),
                 "intro": meta_json["intro"]
             }
         description += json.dumps(new_json_dict, ensure_ascii=False)

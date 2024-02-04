@@ -1,10 +1,12 @@
+import os
+
 import pika
 import json
 
 from common.print_color import print_green
 
 # RabbitMQ 服务器的连接参数
-rabbitmq_credentials = pika.PlainCredentials(username='lxs', password='root')
+rabbitmq_credentials = pika.PlainCredentials(username='lujunjie', password='q852853q')
 rabbitmq_parameters = pika.ConnectionParameters(host='127.0.0.1', credentials=rabbitmq_credentials)
 connection = pika.BlockingConnection(rabbitmq_parameters)
 channel = connection.channel()
@@ -13,9 +15,10 @@ queue_name = 'common'
 
 def send_task(task_id: str, module_name: str, plugin_name: str):
     channel.queue_declare(queue=queue_name, durable=True)
-    prefix = "/home/lxs/code/ospp/user"
+    prefix = os.path.abspath("../user/")
     input_prefix = f"{prefix}/input/{task_id}"
     output_prefix = f"{prefix}/output/{task_id}"
+    os.mkdir(output_prefix)
     message = {
         "inputFile": f"{input_prefix}/data.txt",
         "confFile": f"{input_prefix}/data.json",

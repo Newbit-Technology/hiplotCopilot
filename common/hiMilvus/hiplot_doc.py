@@ -9,11 +9,23 @@ def build_hiplot_doc() -> Collection:
     # create collection
     fields = [
         FieldSchema(name="id", dtype=DataType.VARCHAR, max_length=32, is_primary=True),
-        FieldSchema(name="embeddings", dtype=DataType.FLOAT_VECTOR, dim=384),
-        FieldSchema(name="content", dtype=DataType.VARCHAR, max_length=4096)
+        FieldSchema(name="embeddings", dtype=DataType.FLOAT_VECTOR, dim=768),
+        FieldSchema(name="content", dtype=DataType.VARCHAR, max_length=8192)
     ]
+
     schema = CollectionSchema(fields, "Hiplot docs")
-    hiplot_doc_collection = Collection("hiplot_doc", schema)
+    hiplot_doc_collection = Collection("hiplot_doc")
+    #if schema != hiplot_doc_collection.schema:
+        # 删除已存在的集合
+    def drop_exit():
+        nonlocal hiplot_doc_collection
+        hiplot_doc_collection.drop()
+        hiplot_doc_collection = Collection("hiplot_doc", schema)
+        print_green("New collection created.")
+    drop_exit() if input("是否删除已有集合? Y/n") == "Y" else print("Retain Dropped existing collection")
+
+    #else:
+    #    print("Collection already exists with matching schema.")
 
     # create index
     index = {
