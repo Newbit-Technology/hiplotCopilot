@@ -5,8 +5,12 @@ import nanoid
 from flask import Flask, request, Response
 from langchain_core.messages import ToolMessage, HumanMessage, AIMessage, SystemMessage
 
-from common.print_color import print_red, print_yellow, print_green
+from common.print_color import print_red, print_yellow, print_green, print_blue
 from pipeline.copilot import TalkHelper
+
+import os
+os.environ['https_proxy'] = "http://127.0.0.1:1080"
+os.environ['socks_proxy'] = "socks5://127.0.0.1:1080"
 talk_helper = TalkHelper()
 app = Flask(__name__)
 def lang_chain_with_function_calling(user_message):
@@ -24,7 +28,7 @@ def lang_chain_with_function_calling(user_message):
         elif msg['role'] == 'assistant':
             langchain_messages.append(AIMessage(content=msg['content']))
         elif msg['role'] == 'function':
-            langchain_messages.append(ToolMessage(name=msg['name'], content=msg['content']))
+            langchain_messages.append(ToolMessage(tool_call_id=msg['name'], content=msg['content']))
 
 
     func_message = talk_helper.func_llm.invoke(langchain_messages)
@@ -37,16 +41,33 @@ def lang_chain_with_function_calling(user_message):
         arguments = json.loads(func_message.additional_kwargs["tool_calls"][0]["function"]['arguments'])
         function_response = talk_helper.func_call(function_name, arguments)
         # 初始化函数执行结果字符串
-        print_yellow(f"{function_name}:{arguments}")
-        print_yellow(function_response)
-        function_message = ToolMessage(name=function_name, content=function_response)
-        # 将函数执行结果消息添加到消息列表中
-        langchain_messages.append(function_message)
+        print_red(f"{function_name}:{arguments}")
+        print_blue(function_response)
 
-        # 再次使用语言模型预测回复消息，提供可调用的函数列表
+        # 将函数执行结果消息添加到消息列表中
+        # function_message = ToolMessage(tool_call_id=function_name+nanoid.generate(alphabet=string.digits + string.ascii_letters, size=10), content=function_response)
+        # langchain_messages.append(function_message)
+
+        # 添加一个新的系统消息，指导模型如何处理函数调用结果
+        system_message = SystemMessage(content=f"""请根据之前的对话和函数调用结果，生成一个总结回复
+        确保回复考虑到了函数返回的信息, 对于画图工具说明所属模块和插件名。
+        上一步工具调用的结果：
+        function_name:{function_name}
+        function_response:{function_response}
+        """)
+        # second_response = talk_helper.func_llm.invoke([system_message])
+
+        langchain_messages.append(system_message)
+        # 使用更新后的消息列表进行二次调用
         second_response = talk_helper.func_llm.invoke(langchain_messages)
-        # 返回最终的AI回复
-        return second_response.content
+
+        print("二次调用:",second_response)
+        # 处理二次回复
+        if isinstance(second_response, AIMessage):
+            final_response = second_response.content
+        else:
+            final_response = str(second_response)
+        return final_response
     else:
         # 如果不需要调用函数，直接返回模型生成的回复
         return func_message.content

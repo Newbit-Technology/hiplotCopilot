@@ -77,8 +77,8 @@ The comments for each option and the default values are as follows.You must to a
 Optional options for each parameter, the range and meaning are as follows.
 {item}
 
-If there are options for data type in options, chose by the first three rows of each chart.
-{data}
+If there are options for data type in options, chose by input.
+data_type: {data_type}
 
 You only need to return a JSON object, where the key represents the variable name that needs to be input, and the value represents the chosen variable name used for input.
 

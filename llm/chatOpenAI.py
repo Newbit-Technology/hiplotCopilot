@@ -8,7 +8,14 @@ def chat_openai(temperature=0):
     temperature=temperature,
     max_tokens=8000,
     )
-
+def chat_claude(temperature=0):
+    return ChatOpenAI(
+        model='claude-3-5-sonnet-20240620',
+        openai_api_key='sk-A9TX4JVVEEotW5JHAe186fCeBf6c4b06A7Dc5a2f2bB213F2',
+        openai_api_base='https://api.gpt.ge/v1',
+        temperature=temperature,
+        max_tokens=8000,
+    )
 def gemini_openai(temperature=0):
     return ChatGoogleGenerativeAI(
         model='gemini-1.5-flash-exp-0827',

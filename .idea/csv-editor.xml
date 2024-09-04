@@ -227,6 +227,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/init/plugins-open/basic/roc/test.Delong.Comparision.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>

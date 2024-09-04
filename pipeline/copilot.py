@@ -13,23 +13,28 @@ from common.hiTowhee import model
 from common.print_color import print_blue, print_yellow
 from common.hiMilvus import custom_collection,hiplot_plugins_text
 
-from llm.chatOpenAI import chat_openai, encode_image_message
-from plugin_copilot.rabbitmq import send_task
+from llm.chatOpenAI import chat_openai, encode_image_message, chat_claude
+from plugin_copilot.rabbitmq import RabbitMQClient
 from plugin_copilot.prompt import describe_image, explain_plug, select_extra_params
 from plugin_copilot.ui_json import get_table_required, get_extra_required
+
 
 class DrawChart:
     project_path = os.path.abspath("../hiplot-org-plugins")
     destination_path = os.path.abspath("../user/input")
     print_blue(f"project_path\t{project_path}")
 
-    def __init__(self,llm, json_llm, session_path):
-        self.session_path = session_path
-        self.data = None
-        self.ui = None
-        self.data_top = None
-        self.title_descriptions = None
+
+    def __init__(self, llm, vlm, json_llm, json_vlm, session_path,rabbitmq_client):
         self.input_extra_required = None
+        self.data_top = None
+        self.figures = None
+        self.llm = llm
+        self.vlm = vlm
+        self.json_llm = json_llm
+        self.json_vlm = json_vlm
+        self.session_path = session_path
+        self.session_path = session_path
         self.figures = None
         self.img_url = ""
         self.image_filepath = ""
@@ -44,10 +49,11 @@ class DrawChart:
         self.input_json_required = ""
         self.llm = llm
         self.json_llm = json_llm
-
-    def run(self,image_path, module_name, plugin_name):
+        self.rabbitmq_client = rabbitmq_client
+    def run(self,image_path, module_name, data_type, plugin_name):
         self.plugin_name = plugin_name
         self.module_name = module_name
+        self.data_type = data_type
         self.get_input_arg_required()
         # 3.选择合适的参数填充
         self.get_title_description()
@@ -59,30 +65,17 @@ class DrawChart:
 
         # 5.将文件迁移到指定位置
         self.move_file()
-        resp = self.send(module_name,plugin_name)
-        # 构造 tool_output
-        tool_output = {
-            "stdout": f"{resp}",
-            "stderr": None,  # 假设没有错误
-            "artifacts": {
-                "type": "image",
-                "base64_data": self.encode_image(image_path),  # 假设有一个方法将图像编码为Base64
-                "data_file_path": os.path.join(self.destination_path, self.tid, "data.json"),  # 新构造的data.json路径
-                "image_file_path": os.path.join(self.destination_path, self.tid, f"{self.tid}.png")  # 假设生成的图像文件名为tid.png
-            },
-        }
 
-        # 6.将构造好的所有内容提交至rscheduler运行
-        return
-
+        return self.send(module_name,plugin_name)
+    def send(self,module_name,plugin_name):
+        self.rabbitmq_client.send_task(self.tid, module_name=module_name, plugin_name=plugin_name)
+        return f"任务{self.tid}已提交,module_name={module_name}, plugin_name={plugin_name}"
     def get_title_description(self):
         from plugin_copilot.prompt import explain_title
         from plugin_copilot.data_txt import get_data_top
         # 遍历所有data{i}.txt形式的文件
         self.title_descriptions = {}
         table_names = list(self.data["params"]["config"]["data"].keys())
-
-
         for i in range(0, 100):
             if i == 0:
                 file_path = f"{self.session_path}/data.txt"
@@ -133,11 +126,11 @@ class DrawChart:
         # 遍历所有data{i}.txt形式的文件
         for i in range(0, 100):
             if i == 0:
-                file_path = f"{self.session_path}/data.txt"
+                file_path = f"data.txt"
             else:
-                file_path = f"{self.session_path}/data{i}.txt"
+                file_path = f"data{i}.txt"
             if os.path.exists(file_path):
-                shutil.copy(os.path.abspath(file_path), os.path.join(input_path, file_path))
+                shutil.copy(os.path.abspath(f"{self.session_path}/{file_path}"), os.path.join(input_path, file_path))
             else:
                 break
 
@@ -148,6 +141,7 @@ class DrawChart:
     def get_hit_params(self,image_path):
         print(image_path)
         from plugin_copilot.prompt import select_params
+
         if self.input_json_required != {}:
             describe:BaseMessage = select_params.format(description_json=self.title_descriptions, input_json=self.input_json_required)
             resp = self.json_llm.invoke([encode_image_message(describe,image_path)])
@@ -159,8 +153,8 @@ class DrawChart:
             if os.path.exists(f"{self.session_path}/explain_plug.txt"):
                 with open(f"{self.session_path}/explain_plug.txt", "r") as f:
                     pre_describe = f.read()
-            describe = select_extra_params.format(description=f"{pre_describe}",item={self.input_extra_required},data=self.data_top)
-            resp = self.json_llm.invoke([encode_image_message(describe,image_path)])
+            describe = select_extra_params.format(description=f"{pre_describe}",item={self.input_extra_required},data_type=self.data_type)
+            resp = self.json_vlm.invoke([encode_image_message(describe,image_path)])
             e_params = resp.content
             self.hit_params_dict = json.loads(e_params)
 
@@ -187,17 +181,19 @@ class DrawChart:
     def get_plugin_path(self):
         self.plugin_path = os.path.join(self.project_path, self.module_name, self.plugin_name)
 
-    def send(self,module_name,plugin_name):
-        send_task(task_id=self.tid, module_name=module_name, plugin_name=plugin_name)
-        return f"任务{self.tid}已提交,module_name={module_name}, plugin_name={plugin_name}"
-
 class ChooseChart:
     project_path = os.path.abspath("../hiplot-org-plugins")
     destination_path = os.path.abspath("../user/input")
     print_blue(f"project_path\t{project_path}")
 
 
-    def __init__(self,llm, json_llm, session_path):
+    def __init__(self, llm, vlm, json_llm, json_vlm, session_path,rabbitmq_client):
+        self.figures = None
+        self.llm = llm
+        self.vlm = vlm
+        self.json_llm = json_llm
+        self.json_vlm = json_vlm
+        self.session_path = session_path
         self.session_path = session_path
         self.figures = None
         self.img_url = ""
@@ -213,7 +209,7 @@ class ChooseChart:
         self.input_json_required = ""
         self.llm = llm
         self.json_llm = json_llm
-
+        self.rabbitmq_client = rabbitmq_client
     def run(self, renderURL):
         for filename in os.listdir(f"{self.session_path}"):
             if filename.startswith("figures") and filename.endswith(".json"):
@@ -268,10 +264,9 @@ class ChooseChart:
         插件的所属模块和插件名如下:
         所属模块:{self.module_name}
         插件名:{self.plugin_name}
+        请严格根据插件名调用
         """
-
-        print(respponse)
-
+        return respponse
     def get_module_and_plugin_name(self):
         # 根据图像描述和预训练的模型来确定插件名，并获取相应的模块名
         # 获取插件名
@@ -347,10 +342,6 @@ class ChooseChart:
     def get_plugin_path(self):
         self.plugin_path = os.path.join(self.project_path, self.module_name, self.plugin_name)
 
-
-    def send(self,module_name,plugin_name):
-        send_task(task_id=self.tid, module_name=module_name, plugin_name=plugin_name)
-
     def embedding_description(self,desc: str, image_url: str):
         text_embedding = model.encode_text(desc)
         img_embedding = model.encode_image(image_url)
@@ -385,11 +376,14 @@ class ChooseChart:
 
 
 class ReadChart:
-    def __init__(self, llm, json_llm, session_path):
+    def __init__(self, llm, vlm, json_llm, json_vlm, session_path,        rabbitmq_client):
         self.figures = None
         self.llm = llm
+        self.vlm = vlm
         self.json_llm = json_llm
+        self.json_vlm = json_vlm
         self.session_path = session_path
+        self.rabbitmq_client = rabbitmq_client
     def run(self, path):
         self.extract_caption(path)
         return self.read_chart()
@@ -461,14 +455,16 @@ class TalkHelper:
         self.session_id = nanoid.generate(alphabet=string.digits + string.ascii_letters, size=10)
         self.talk_helper = None
         self.json_llm = chat_openai().bind(response_format={"type": "json_object"})
+        self.json_vlm = chat_claude().bind(response_format={"type": "json_object"})
         self.llm = chat_openai()
+        self.vlm = chat_claude()
         self.session_path = os.path.join("sessions", self.session_id)
         os.makedirs(self.session_path, exist_ok=True)
-        self.read_chart = ReadChart(self.llm, self.json_llm, self.session_path)
-        self.choose_chart = ChooseChart(self.llm, self.json_llm, self.session_path)
-        self.draw_chart = DrawChart(self.llm, self.json_llm, self.session_path)
-        self.file_tools = FileTools(self.llm, self.json_llm, self.session_path)
-
+        self.rabbitmq_client = RabbitMQClient(username='lujunjie', password='q852853q')
+        self.read_chart = ReadChart(self.vlm,self.llm,self.json_llm,self.json_vlm, self.session_path,self.rabbitmq_client)
+        self.choose_chart = ChooseChart(self.vlm,self.llm,self.json_llm,self.json_vlm, self.session_path,self.rabbitmq_client)
+        self.draw_chart = DrawChart(self.llm,self.llm,self.json_llm,self.json_vlm, self.session_path,self.rabbitmq_client)
+        self.file_tools = FileTools(self.llm,self.llm,self.session_path)
 
         self.functions = [
             {
@@ -530,9 +526,13 @@ class TalkHelper:
                         "plugin_name": {
                             "type": "string",
                             "description": "要使用的插件名称。例如：scatter"
+                        },
+                        "data_type": {
+                            "type": "string",
+                            "description": "要填写的数据表格的类型，例如：list"
                         }
                     },
-                    "required": ["image_path", "module_name", "plugin_name"]
+                    "required": ["image_path", "module_name", "plugin_name", "data_type"]
                 }
             }
         ]
@@ -547,7 +547,7 @@ class TalkHelper:
             case "choose_chart":
                 resp = self.choose_chart.run(arguments["renderURL"])
             case "draw_chart":
-                resp = self.draw_chart.run(arguments["image_path"], arguments["module_name"], arguments["plugin_name"])
+                resp = self.draw_chart.run(arguments["image_path"], arguments["module_name"], arguments["data_type"],arguments["plugin_name"], )
             case "get_file_list":
                 resp = self.file_tools.get_file_list(arguments["path"])
 
