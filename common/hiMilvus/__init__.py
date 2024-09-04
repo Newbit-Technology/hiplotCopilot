@@ -1,7 +1,7 @@
 from pymilvus import connections
 from common.print_color import print_green, print_red
 from common.hiMilvus.hiplot_doc import build_hiplot_doc
-from common.hiMilvus.hiplot_plugins import build_hiplot_plugins
+from common.hiMilvus.hiplot_plugins import CustomCollection, build_hiplot_plugins_text,build_hiplot_plugins_image
 
 try:
     print_green("Connecting milvus......")
@@ -13,8 +13,10 @@ except Exception as e:
 
 # build
 try:
-    hiplot_doc_collection = build_hiplot_doc()
-    hiplot_plugins_collection = build_hiplot_plugins()
+    # hiplot_doc_collection = build_hiplot_doc()
+    hiplot_plugins_text = build_hiplot_plugins_text()
+    hiplot_plugins_img = build_hiplot_plugins_image()
+    custom_collection = CustomCollection(hiplot_plugins_text, hiplot_plugins_img)
 except Exception as e:
     print_red(f"Failed to build collections: {e}")
     raise

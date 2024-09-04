@@ -3,9 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/hiplot-org-plugins" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/hiplotlib" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/init/docs" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/init/plugins-open" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/rscheduler" vcs="Git" />
   </component>
 </project>

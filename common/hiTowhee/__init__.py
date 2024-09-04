@@ -1,13 +1,12 @@
-from towhee import AutoPipes,AutoConfig
-
-from common.print_color import print_green
+from transformers import AutoModel
+import torch
 import os
-# get the built-in sentence_similarity pipeline
-os.environ["https_proxy"] = "http://127.0.0.1:1080"
-print_green("Loading embedding model......")
-config = AutoConfig.load_config('sentence_embedding')
-config.model = 'paraphrase-multilingual-mpnet-base-v2'
-config.device = 0
-embedding_pipeline = AutoPipes.pipeline('sentence_embedding', config=config)
-print_green("Loading embedding model successful!")
+os.environ['https_proxy'] = 'http://127.0.0.1:1080'
+# 检查 CUDA 是否可用
+cuda_available = torch.cuda.is_available()
+
+# 输出结果
+if cuda_available:
+    print("CUDA 可用，可以使用 GPU。")
+model = AutoModel.from_pretrained('jinaai/jina-clip-v1', trust_remote_code=True,device_map="cuda")
 del os.environ["https_proxy"]

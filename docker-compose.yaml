@@ -76,7 +76,6 @@ services:
     depends_on:
       - "standalone"
 
-
   #  mysql:
 #    container_name: hiplotCopilot-mysql
 #    image: mysql:8.2.0

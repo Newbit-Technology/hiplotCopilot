@@ -10,7 +10,7 @@ class InputData:
         return json.dumps(self.__dict__)
 
 
-def get_data_top(path: str, line_num: int = 6):
+def get_data_top(path: str, line_num: int = 3):
     """
     从指定文件路径读取前`line_num`行数据。
 
