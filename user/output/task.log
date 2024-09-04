@@ -1,0 +1,515 @@
+INFO [2024-09-04 18:33:16] Task started: basic/upset-plot.
+INFO [2024-09-04 18:33:16] Reading parameters......
+List of 3
+ $ data   :List of 1
+  ..$ 1-data:List of 2
+  .. ..$ value: chr ""
+  .. ..$ link : chr ""
+ $ general:List of 5
+  ..$ cmd            : chr ""
+  ..$ imageExportType:List of 2
+  .. ..$ : chr "jpeg"
+  .. ..$ : chr "pdf"
+  ..$ size           :List of 2
+  .. ..$ width : int 10
+  .. ..$ height: int 4
+  ..$ title          : chr ""
+  ..$ font           : chr "Arial"
+ $ extra  :List of 13
+  ..$ setsLabel  : chr "Numbers of DEGs"
+  ..$ combLabel  : chr "Downregulated DEGs"
+  ..$ mode       : chr "intersect"
+  ..$ type       : chr "list"
+  ..$ ptSize     : int 4
+  ..$ lwd        : int 1
+  ..$ setBarColor: chr "#3182bd"
+  ..$ comBarColor: chr "#3182bd"
+  ..$ comColor   : chr "#000000"
+  ..$ bgColor    : chr "#f0f0f0"
+  ..$ bgPtColor  : chr "#cccccc"
+  ..$ reorderSets: chr "desc"
+  ..$ reorderComb: chr "desc"
+NULL
+INFO [2024-09-04 18:33:16] Checking data files...
+INFO [2024-09-04 18:33:16] Reading data...
+     Set1      Set2     Set3      Set4    Set5      Set6    Set7     Set8
+1   ISG15      HES5     DVL1   MATP6P1 FAM132A   FAM132A FAM132A  TNFRSF4
+2  TTLL10  AURKAIP1 ARHGEF16   MIR551A    AGRN   MIR551A WBP1LP6   WASH7P
+3    HES4 LINC00982   OR4F16  C1orf222 WBP1LP6   MIR200B   PANK4   TMEM52
+4  OR4G4P    FAM87B      SKI   MIR200B  KLHL17    ATAD3C  OR4G4P   MMP23B
+5 MND2P28       SKI   WASH7P LINC00115  FAM41C   ANKRD65   SSU72   CDK11B
+6  FAM87B     GABRD    MEGF6    ATAD3B   PANK4 LINC01128 MND2P28 C1orf170
+$Set1
+ [1] "ACAP3"     "AGRN"      "ATAD3A"    "ATAD3B"    "ATAD3C"    "C1orf170" 
+ [7] "C1orf233"  "C1orf86"   "CCDC27"    "CDK11B"    "CICP27"    "CICP3"    
+[13] "DDX11L1"   "FAM138A"   "FAM213B"   "FAM87B"    "GLTPD1"    "GNB1"     
+[19] "HES4"      "HES5"      "ISG15"     "LINC00115" "LINC01128" "MIR200A"  
+[25] "MIR200B"   "MIR429"    "MMP23B"    "MND2P28"   "MRPL20"    "MXRA8"    
+[31] "OR4G4P"    "PANK4"     "PEX10"     "PLCH2"     "PRDM16"    "PUSL1"    
+[37] "SCNN1D"    "SDF4"      "SKI"       "SSU72"     "TAS1R3"    "TMEM52"   
+[43] "TNFRSF4"   "TP73"      "TTLL10"    "UBE2J2"    "VWA1"      "WASH7P"   
+[49] "WBP1LP6"   "WBP1LP7"  
+
+$Set2
+ [1] "AGRN"      "ANKRD65"   "ARHGEF16"  "ATAD3B"    "AURKAIP1"  "C1orf170" 
+ [7] "C1orf233"  "C1orf86"   "CALML6"    "CCNL2"     "CDK11B"    "CICP7"    
+[13] "DDX11L1"   "DVL1"      "FAM132A"   "FAM138A"   "FAM213B"   "FAM87B"   
+[19] "GABRD"     "HES4"      "HES5"      "ISG15"     "KLHL17"    "LINC00982"
+[25] "MATP8P1"   "MEGF6"     "MIB2"      "MIR200A"   "MIR429"    "MMP23A"   
+[31] "MMP23B"    "MND2P28"   "NADK"      "NOC2L"     "OR4F16"    "OR4F5"    
+[37] "OR4G11P"   "OR4G4P"    "PLEKHN1"   "RN7SL657P" "RNF223"    "SAMD11"   
+[43] "SCNN1D"    "SDF4"      "SKI"       "SLC35E2"   "SLC35E2B"  "SMIM1"    
+[49] "TMEM240"   "TMEM52"    "TNFRSF14"  "TNFRSF18"  "TNFRSF4"   "TPRG1L"   
+[55] "TTC34"     "UBE2J2"    "VWA1"      "WASH7P"    "WBP1LP6"   "WBP1LP7"  
+
+$Set3
+ [1] "ACTRT2"    "ANKRD65"   "ARHGEF16"  "ATAD3A"    "ATAD3B"    "ATAD3C"   
+ [7] "AURKAIP1"  "B3GALT6"   "C1orf159"  "C1orf170"  "C1orf233"  "C1orf86"  
+[13] "CCDC27"    "CDK11A"    "CICP27"    "CICP3"     "CICP7"     "CPSF3L"   
+[19] "DDX11L1"   "DVL1"      "FAM132A"   "FAM213B"   "FAM41C"    "FAM87B"   
+[25] "GABRD"     "GNB1"      "HES4"      "HES5"      "ISG15"     "LINC00115"
+[31] "LINC00982" "LINC01128" "MATP8P1"   "MEGF6"     "MIB2"      "MIR200A"  
+[37] "MIR200B"   "MIR429"    "MIR551A"   "MMP23B"    "MND2P28"   "MRPL20"   
+[43] "MXRA8"     "NOC2L"     "OR4F16"    "OR4F29"    "OR4F5"     "OR4G11P"  
+[49] "PLCH2"     "PLEKHN1"   "PRDM16"    "RER1"      "RNF223"    "SAMD11"   
+[55] "SCNN1D"    "SDF4"      "SKI"       "SLC35E2B"  "TAS1R3"    "TMEM240"  
+[61] "TMEM52"    "TMEM88B"   "TNFRSF14"  "TNFRSF18"  "TP73"      "TTLL10"   
+[67] "UBE2J2"    "VWA1"      "WASH7P"    "WRAP73"   
+
+$Set4
+ [1] "ACAP3"     "AGRN"      "ATAD3A"    "ATAD3B"    "ATAD3C"    "AURKAIP1" 
+ [7] "B3GALT6"   "C1orf159"  "C1orf222"  "C1orf86"   "CICP7"     "DDX11L1"  
+[13] "GABRD"     "GNB1"      "HES4"      "ISG15"     "LINC00115" "LINC00982"
+[19] "MATP6P1"   "MIB2"      "MIR200B"   "MIR551A"   "MMP23B"    "MND2P28"  
+[25] "MORN1"     "MRPL20"    "MXRA8"     "NADK"      "OR4F16"    "OR4F29"   
+[31] "OR4G11P"   "PANK4"     "RER1"      "SAMD11"    "TMEM52"    "TPRG1L"   
+[37] "TTC34"     "UBE2J2"    "WBP1LP7"   "WRAP73"   
+
+$Set5
+ [1] "ACAP3"     "ACTRT2"    "AGRN"      "ANKRD65"   "ARHGEF16"  "ATAD3A"   
+ [7] "ATAD3B"    "ATAD3C"    "AURKAIP1"  "B3GALT6"   "C1orf170"  "C1orf222" 
+[13] "C1orf233"  "C1orf86"   "CALML6"    "CCDC27"    "CDK11A"    "CICP27"   
+[19] "CICP3"     "CICP7"     "DDX11L1"   "FAM132A"   "FAM138A"   "FAM213B"  
+[25] "FAM41C"    "FAM87B"    "GLTPD1"    "GNB1"      "HES4"      "HES5"     
+[31] "ISG15"     "KLHL17"    "LINC00982" "LINC01128" "MATP8P1"   "MIB2"     
+[37] "MIR200A"   "MIR200B"   "MIR429"    "MIR551A"   "MMEL1"     "MMP23B"   
+[43] "MND1P23"   "MND2P28"   "MORN1"     "MRPL20"    "NADK"      "OR4F16"   
+[49] "OR4F29"    "OR4F5"     "OR4G4P"    "PANK4"     "PLCH2"     "PLEKHN1"  
+[55] "PRKCZ"     "PUSL1"     "RER1"      "RNF223"    "SAMD11"    "SCNN1D"   
+[61] "SDF4"      "SKI"       "SLC35E2"   "SLC35E2B"  "SMIM1"     "SSU72"    
+[67] "TAS1R3"    "TMEM240"   "TNFRSF14"  "TNFRSF18"  "TNFRSF4"   "TPRG1L"   
+[73] "TTC34"     "TTLL10"    "TUBB8P11"  "UBE2J2"    "WASH7P"    "WBP1LP6"  
+[79] "WBP1LP7"   "WRAP73"   
+
+$Set6
+[1] "ANKRD65"   "ATAD3C"    "C1orf222"  "FAM132A"   "LINC01128" "MIR200B"  
+[7] "MIR551A"   "RER1"     
+
+$Set7
+[1] "FAM132A"   "MND2P28"   "OR4G4P"    "PANK4"     "RN7SL657P" "SSU72"    
+[7] "WBP1LP6"  
+
+$Set8
+[1] "ARHGEF16" "C1orf170" "CDK11B"   "MMP23B"   "TMEM52"   "TNFRSF4"  "WASH7P"  
+
+INFO [2024-09-04 18:33:18] Task done: basic/upset-plot.
+─ Session info ───────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.4.1 (2024-06-14)
+ os       Linux Mint 22
+ system   x86_64, linux-gnu
+ ui       X11
+ language zh_CN:zh
+ collate  zh_CN.UTF-8
+ ctype    zh_CN.UTF-8
+ tz       Asia/Shanghai
+ date     2024-09-04
+ pandoc   NA (via rmarkdown)
+
+─ Packages ───────────────────────────────────────────────────────────────────
+ package           * version date (UTC) lib source
+ askpass             1.2.0   2023-09-03 [1] CRAN (R 4.4.1)
+ backports           1.5.0   2024-05-23 [1] CRAN (R 4.4.1)
+ base64enc           0.1-3   2015-07-28 [1] CRAN (R 4.4.1)
+ BiocGenerics        0.50.0  2024-04-30 [1] Bioconductor 3.19 (R 4.4.1)
+ bitops              1.0-8   2024-07-29 [1] CRAN (R 4.4.1)
+ broom               1.0.6   2024-05-17 [1] CRAN (R 4.4.1)
+ Cairo               1.6-2   2023-11-28 [1] CRAN (R 4.4.1)
+ callr               3.7.6   2024-03-25 [1] CRAN (R 4.4.1)
+ caTools             1.18.2  2021-03-28 [1] CRAN (R 4.4.1)
+ circlize            0.4.16  2024-02-20 [1] CRAN (R 4.4.1)
+ cli                 3.6.3   2024-06-21 [1] CRAN (R 4.4.1)
+ clue                0.3-65  2023-09-23 [1] CRAN (R 4.4.1)
+ cluster             2.1.6   2023-12-01 [4] CRAN (R 4.4.0)
+ codetools           0.2-20  2024-03-31 [4] CRAN (R 4.4.0)
+ colorspace          2.1-1   2024-07-26 [1] CRAN (R 4.4.1)
+ ComplexHeatmap    * 2.20.0  2024-04-30 [1] Bioconductor 3.19 (R 4.4.1)
+ cowplot           * 1.1.3   2024-01-22 [1] CRAN (R 4.4.1)
+ crayon              1.5.3   2024-06-20 [1] CRAN (R 4.4.1)
+ data.table          1.16.0  2024-08-27 [1] CRAN (R 4.4.1)
+ devEMF              4.5     2024-07-26 [1] CRAN (R 4.4.1)
+ digest              0.6.37  2024-08-19 [1] CRAN (R 4.4.1)
+ doParallel          1.0.17  2022-02-07 [1] CRAN (R 4.4.1)
+ dplyr               1.1.4   2023-11-17 [1] CRAN (R 4.4.1)
+ evaluate            0.24.0  2024-06-10 [1] CRAN (R 4.4.1)
+ export              0.3.0   2024-09-02 [1] Github (tomwenseleers/export@9414f69)
+ extrafont         * 0.19    2023-01-18 [1] CRAN (R 4.4.1)
+ extrafontdb         1.0     2012-06-11 [1] CRAN (R 4.4.1)
+ fansi               1.0.6   2023-12-08 [1] CRAN (R 4.4.1)
+ fastmap             1.2.0   2024-05-15 [1] CRAN (R 4.4.1)
+ flextable           0.9.6   2024-05-05 [1] CRAN (R 4.4.1)
+ fontBitstreamVera   0.1.1   2017-02-01 [1] CRAN (R 4.4.1)
+ fontLiberation      0.1.0   2016-10-15 [1] CRAN (R 4.4.1)
+ fontquiver          0.2.1   2017-02-01 [1] CRAN (R 4.4.1)
+ foreach             1.5.2   2022-02-02 [1] CRAN (R 4.4.1)
+ formatR             1.14    2023-01-17 [1] CRAN (R 4.4.1)
+ fs                  1.6.4   2024-04-25 [1] CRAN (R 4.4.1)
+ futile.logger     * 1.4.3   2016-07-10 [1] CRAN (R 4.4.1)
+ futile.options      1.0.1   2018-04-20 [1] CRAN (R 4.4.1)
+ gdtools             0.4.0   2024-08-28 [1] CRAN (R 4.4.1)
+ generics            0.1.3   2022-07-05 [1] CRAN (R 4.4.1)
+ getopt              1.20.4  2023-10-01 [1] CRAN (R 4.4.1)
+ GetoptLong          1.0.5   2020-12-15 [1] CRAN (R 4.4.1)
+ ggplot2           * 3.5.1   2024-04-23 [1] CRAN (R 4.4.1)
+ ggplotify         * 0.1.2   2023-08-09 [1] CRAN (R 4.4.1)
+ GlobalOptions       0.1.2   2020-06-10 [1] CRAN (R 4.4.1)
+ glue                1.7.0   2024-01-09 [1] CRAN (R 4.4.1)
+ gplots              3.1.3.1 2024-02-02 [1] CRAN (R 4.4.1)
+ gridGraphics        0.5-1   2020-12-13 [1] CRAN (R 4.4.1)
+ gtable              0.3.5   2024-04-22 [1] CRAN (R 4.4.1)
+ gtools              3.9.5   2023-11-20 [1] CRAN (R 4.4.1)
+ hiplotlib         * 0.2.1-2 2024-09-02 [1] Github (hiplot/hiplotlib@5cb6d31)
+ htmltools           0.5.8.1 2024-04-04 [1] CRAN (R 4.4.1)
+ htmlwidgets         1.6.4   2023-12-06 [1] CRAN (R 4.4.1)
+ httr                1.4.7   2023-08-15 [1] CRAN (R 4.4.1)
+ IRanges             2.38.1  2024-07-03 [1] Bioconductor 3.19 (R 4.4.1)
+ iterators           1.0.14  2022-02-05 [1] CRAN (R 4.4.1)
+ jsonlite            1.8.8   2023-12-04 [1] CRAN (R 4.4.1)
+ KernSmooth          2.23-24 2024-05-17 [4] CRAN (R 4.4.0)
+ knitr               1.48    2024-07-07 [1] CRAN (R 4.4.1)
+ labeling            0.4.3   2023-08-29 [1] CRAN (R 4.4.1)
+ lambda.r            1.2.4   2019-09-18 [1] CRAN (R 4.4.1)
+ lattice             0.22-6  2024-03-20 [4] CRAN (R 4.4.1)
+ lazyeval            0.2.2   2019-03-15 [1] CRAN (R 4.4.1)
+ lifecycle           1.0.4   2023-11-07 [1] CRAN (R 4.4.1)
+ magick              2.8.4   2024-07-14 [1] CRAN (R 4.4.1)
+ magrittr            2.0.3   2022-03-30 [1] CRAN (R 4.4.1)
+ Matrix              1.7-0   2024-04-26 [4] CRAN (R 4.4.0)
+ matrixStats         1.3.0   2024-04-11 [1] CRAN (R 4.4.1)
+ munsell             0.5.1   2024-04-01 [1] CRAN (R 4.4.1)
+ officer             0.6.6   2024-05-05 [1] CRAN (R 4.4.1)
+ openssl             2.2.1   2024-08-16 [1] CRAN (R 4.4.1)
+ openxlsx          * 4.2.7   2024-08-30 [1] CRAN (R 4.4.1)
+ optparse            1.7.5   2024-04-16 [1] CRAN (R 4.4.1)
+ pacman              0.5.1   2019-03-11 [1] CRAN (R 4.4.1)
+ patchwork         * 1.2.0   2024-01-08 [1] CRAN (R 4.4.1)
+ pillar              1.9.0   2023-03-22 [1] CRAN (R 4.4.1)
+ pkgconfig           2.0.3   2019-09-22 [1] CRAN (R 4.4.1)
+ plotly              4.10.4  2024-01-13 [1] CRAN (R 4.4.1)
+ png                 0.1-8   2022-11-29 [1] CRAN (R 4.4.1)
+ processx            3.8.4   2024-03-16 [1] CRAN (R 4.4.1)
+ ps                  1.7.7   2024-07-02 [1] CRAN (R 4.4.1)
+ purrr               1.0.2   2023-08-10 [1] CRAN (R 4.4.1)
+ R.methodsS3       * 1.8.2   2022-06-13 [1] CRAN (R 4.4.1)
+ R.oo              * 1.26.0  2024-01-24 [1] CRAN (R 4.4.1)
+ R.utils           * 2.12.3  2023-11-18 [1] CRAN (R 4.4.1)
+ R6                  2.5.1   2021-08-19 [1] CRAN (R 4.4.1)
+ ragg                1.3.2   2024-05-15 [1] CRAN (R 4.4.1)
+ RColorBrewer        1.1-3   2022-04-03 [1] CRAN (R 4.4.1)
+ Rcpp                1.0.13  2024-07-17 [1] CRAN (R 4.4.1)
+ reticulate          1.38.0  2024-06-19 [1] CRAN (R 4.4.1)
+ rgl                 1.3.1   2024-03-05 [1] CRAN (R 4.4.1)
+ rjson               0.2.22  2024-08-20 [1] CRAN (R 4.4.1)
+ rlang               1.1.4   2024-06-04 [1] CRAN (R 4.4.1)
+ rmarkdown           2.28    2024-08-17 [1] CRAN (R 4.4.1)
+ Rttf2pt1            1.3.12  2023-01-22 [1] CRAN (R 4.4.1)
+ rvg                 0.3.4   2024-08-27 [1] CRAN (R 4.4.1)
+ S4Vectors           0.42.1  2024-07-03 [1] Bioconductor 3.19 (R 4.4.1)
+ scales              1.3.0   2023-11-28 [1] CRAN (R 4.4.1)
+ sessioninfo         1.2.2   2021-12-06 [1] CRAN (R 4.4.1)
+ shape               1.4.6.1 2024-02-23 [1] CRAN (R 4.4.1)
+ stargazer           5.2.3   2022-03-04 [1] CRAN (R 4.4.1)
+ stringi             1.8.4   2024-05-06 [1] CRAN (R 4.4.1)
+ stringr             1.5.1   2023-11-14 [1] CRAN (R 4.4.1)
+ systemfonts         1.1.0   2024-05-15 [1] CRAN (R 4.4.1)
+ textshaping         0.4.0   2024-05-24 [1] CRAN (R 4.4.1)
+ tibble              3.2.1   2023-03-20 [1] CRAN (R 4.4.1)
+ tidyr               1.3.1   2024-01-24 [1] CRAN (R 4.4.1)
+ tidyselect          1.2.1   2024-03-11 [1] CRAN (R 4.4.1)
+ utf8                1.2.4   2023-10-22 [1] CRAN (R 4.4.1)
+ uuid                1.2-1   2024-07-29 [1] CRAN (R 4.4.1)
+ vctrs               0.6.5   2023-12-01 [1] CRAN (R 4.4.1)
+ VennDiagram       * 1.7.3   2022-04-12 [1] CRAN (R 4.4.1)
+ viridisLite         0.4.2   2023-05-02 [1] CRAN (R 4.4.1)
+ webshot             0.5.5   2023-06-26 [1] CRAN (R 4.4.1)
+ withr               3.0.1   2024-07-31 [1] CRAN (R 4.4.1)
+ xfun                0.47    2024-08-17 [1] CRAN (R 4.4.1)
+ xml2                1.3.6   2023-12-04 [1] CRAN (R 4.4.1)
+ xtable              1.8-4   2019-04-21 [1] CRAN (R 4.4.1)
+ yulab.utils         0.1.7   2024-08-26 [1] CRAN (R 4.4.1)
+ zip                 2.3.1   2024-01-27 [1] CRAN (R 4.4.1)
+
+ [1] /home/lujunjie16/R/x86_64-pc-linux-gnu-library/4.4
+ [2] /usr/local/lib/R/site-library
+ [3] /usr/lib/R/site-library
+ [4] /usr/lib/R/library
+
+──────────────────────────────────────────────────────────────────────────────
+INFO [2024-09-04 19:28:01] Task started: basic/upset-plot.
+INFO [2024-09-04 19:28:01] Reading parameters......
+List of 3
+ $ data   :List of 1
+  ..$ 1-data:List of 2
+  .. ..$ value: chr ""
+  .. ..$ link : chr ""
+ $ general:List of 5
+  ..$ cmd            : chr ""
+  ..$ imageExportType:List of 2
+  .. ..$ : chr "jpeg"
+  .. ..$ : chr "pdf"
+  ..$ size           :List of 2
+  .. ..$ width : int 10
+  .. ..$ height: int 4
+  ..$ title          : chr ""
+  ..$ font           : chr "Arial"
+ $ extra  :List of 13
+  ..$ setsLabel  : chr "Numbers of DEGs"
+  ..$ combLabel  : chr "Downregulated DEGs"
+  ..$ mode       : chr "distinct"
+  ..$ type       : chr "list"
+  ..$ ptSize     : int 3
+  ..$ lwd        : int 2
+  ..$ setBarColor: chr "#3182bd"
+  ..$ comBarColor: chr "#3182bd"
+  ..$ comColor   : chr "#000000"
+  ..$ bgColor    : chr "#e6e6e6"
+  ..$ bgPtColor  : chr "#CCCCCC"
+  ..$ reorderSets: chr "desc"
+  ..$ reorderComb: chr "desc"
+NULL
+INFO [2024-09-04 19:28:01] Checking data files...
+INFO [2024-09-04 19:28:01] Reading data...
+     Set1      Set2     Set3      Set4    Set5      Set6    Set7     Set8
+1   ISG15      HES5     DVL1   MATP6P1 FAM132A   FAM132A FAM132A  TNFRSF4
+2  TTLL10  AURKAIP1 ARHGEF16   MIR551A    AGRN   MIR551A WBP1LP6   WASH7P
+3    HES4 LINC00982   OR4F16  C1orf222 WBP1LP6   MIR200B   PANK4   TMEM52
+4  OR4G4P    FAM87B      SKI   MIR200B  KLHL17    ATAD3C  OR4G4P   MMP23B
+5 MND2P28       SKI   WASH7P LINC00115  FAM41C   ANKRD65   SSU72   CDK11B
+6  FAM87B     GABRD    MEGF6    ATAD3B   PANK4 LINC01128 MND2P28 C1orf170
+$Set1
+ [1] "ACAP3"     "AGRN"      "ATAD3A"    "ATAD3B"    "ATAD3C"    "C1orf170" 
+ [7] "C1orf233"  "C1orf86"   "CCDC27"    "CDK11B"    "CICP27"    "CICP3"    
+[13] "DDX11L1"   "FAM138A"   "FAM213B"   "FAM87B"    "GLTPD1"    "GNB1"     
+[19] "HES4"      "HES5"      "ISG15"     "LINC00115" "LINC01128" "MIR200A"  
+[25] "MIR200B"   "MIR429"    "MMP23B"    "MND2P28"   "MRPL20"    "MXRA8"    
+[31] "OR4G4P"    "PANK4"     "PEX10"     "PLCH2"     "PRDM16"    "PUSL1"    
+[37] "SCNN1D"    "SDF4"      "SKI"       "SSU72"     "TAS1R3"    "TMEM52"   
+[43] "TNFRSF4"   "TP73"      "TTLL10"    "UBE2J2"    "VWA1"      "WASH7P"   
+[49] "WBP1LP6"   "WBP1LP7"  
+
+$Set2
+ [1] "AGRN"      "ANKRD65"   "ARHGEF16"  "ATAD3B"    "AURKAIP1"  "C1orf170" 
+ [7] "C1orf233"  "C1orf86"   "CALML6"    "CCNL2"     "CDK11B"    "CICP7"    
+[13] "DDX11L1"   "DVL1"      "FAM132A"   "FAM138A"   "FAM213B"   "FAM87B"   
+[19] "GABRD"     "HES4"      "HES5"      "ISG15"     "KLHL17"    "LINC00982"
+[25] "MATP8P1"   "MEGF6"     "MIB2"      "MIR200A"   "MIR429"    "MMP23A"   
+[31] "MMP23B"    "MND2P28"   "NADK"      "NOC2L"     "OR4F16"    "OR4F5"    
+[37] "OR4G11P"   "OR4G4P"    "PLEKHN1"   "RN7SL657P" "RNF223"    "SAMD11"   
+[43] "SCNN1D"    "SDF4"      "SKI"       "SLC35E2"   "SLC35E2B"  "SMIM1"    
+[49] "TMEM240"   "TMEM52"    "TNFRSF14"  "TNFRSF18"  "TNFRSF4"   "TPRG1L"   
+[55] "TTC34"     "UBE2J2"    "VWA1"      "WASH7P"    "WBP1LP6"   "WBP1LP7"  
+
+$Set3
+ [1] "ACTRT2"    "ANKRD65"   "ARHGEF16"  "ATAD3A"    "ATAD3B"    "ATAD3C"   
+ [7] "AURKAIP1"  "B3GALT6"   "C1orf159"  "C1orf170"  "C1orf233"  "C1orf86"  
+[13] "CCDC27"    "CDK11A"    "CICP27"    "CICP3"     "CICP7"     "CPSF3L"   
+[19] "DDX11L1"   "DVL1"      "FAM132A"   "FAM213B"   "FAM41C"    "FAM87B"   
+[25] "GABRD"     "GNB1"      "HES4"      "HES5"      "ISG15"     "LINC00115"
+[31] "LINC00982" "LINC01128" "MATP8P1"   "MEGF6"     "MIB2"      "MIR200A"  
+[37] "MIR200B"   "MIR429"    "MIR551A"   "MMP23B"    "MND2P28"   "MRPL20"   
+[43] "MXRA8"     "NOC2L"     "OR4F16"    "OR4F29"    "OR4F5"     "OR4G11P"  
+[49] "PLCH2"     "PLEKHN1"   "PRDM16"    "RER1"      "RNF223"    "SAMD11"   
+[55] "SCNN1D"    "SDF4"      "SKI"       "SLC35E2B"  "TAS1R3"    "TMEM240"  
+[61] "TMEM52"    "TMEM88B"   "TNFRSF14"  "TNFRSF18"  "TP73"      "TTLL10"   
+[67] "UBE2J2"    "VWA1"      "WASH7P"    "WRAP73"   
+
+$Set4
+ [1] "ACAP3"     "AGRN"      "ATAD3A"    "ATAD3B"    "ATAD3C"    "AURKAIP1" 
+ [7] "B3GALT6"   "C1orf159"  "C1orf222"  "C1orf86"   "CICP7"     "DDX11L1"  
+[13] "GABRD"     "GNB1"      "HES4"      "ISG15"     "LINC00115" "LINC00982"
+[19] "MATP6P1"   "MIB2"      "MIR200B"   "MIR551A"   "MMP23B"    "MND2P28"  
+[25] "MORN1"     "MRPL20"    "MXRA8"     "NADK"      "OR4F16"    "OR4F29"   
+[31] "OR4G11P"   "PANK4"     "RER1"      "SAMD11"    "TMEM52"    "TPRG1L"   
+[37] "TTC34"     "UBE2J2"    "WBP1LP7"   "WRAP73"   
+
+$Set5
+ [1] "ACAP3"     "ACTRT2"    "AGRN"      "ANKRD65"   "ARHGEF16"  "ATAD3A"   
+ [7] "ATAD3B"    "ATAD3C"    "AURKAIP1"  "B3GALT6"   "C1orf170"  "C1orf222" 
+[13] "C1orf233"  "C1orf86"   "CALML6"    "CCDC27"    "CDK11A"    "CICP27"   
+[19] "CICP3"     "CICP7"     "DDX11L1"   "FAM132A"   "FAM138A"   "FAM213B"  
+[25] "FAM41C"    "FAM87B"    "GLTPD1"    "GNB1"      "HES4"      "HES5"     
+[31] "ISG15"     "KLHL17"    "LINC00982" "LINC01128" "MATP8P1"   "MIB2"     
+[37] "MIR200A"   "MIR200B"   "MIR429"    "MIR551A"   "MMEL1"     "MMP23B"   
+[43] "MND1P23"   "MND2P28"   "MORN1"     "MRPL20"    "NADK"      "OR4F16"   
+[49] "OR4F29"    "OR4F5"     "OR4G4P"    "PANK4"     "PLCH2"     "PLEKHN1"  
+[55] "PRKCZ"     "PUSL1"     "RER1"      "RNF223"    "SAMD11"    "SCNN1D"   
+[61] "SDF4"      "SKI"       "SLC35E2"   "SLC35E2B"  "SMIM1"     "SSU72"    
+[67] "TAS1R3"    "TMEM240"   "TNFRSF14"  "TNFRSF18"  "TNFRSF4"   "TPRG1L"   
+[73] "TTC34"     "TTLL10"    "TUBB8P11"  "UBE2J2"    "WASH7P"    "WBP1LP6"  
+[79] "WBP1LP7"   "WRAP73"   
+
+$Set6
+[1] "ANKRD65"   "ATAD3C"    "C1orf222"  "FAM132A"   "LINC01128" "MIR200B"  
+[7] "MIR551A"   "RER1"     
+
+$Set7
+[1] "FAM132A"   "MND2P28"   "OR4G4P"    "PANK4"     "RN7SL657P" "SSU72"    
+[7] "WBP1LP6"  
+
+$Set8
+[1] "ARHGEF16" "C1orf170" "CDK11B"   "MMP23B"   "TMEM52"   "TNFRSF4"  "WASH7P"  
+
+INFO [2024-09-04 19:28:03] Task done: basic/upset-plot.
+─ Session info ───────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.4.1 (2024-06-14)
+ os       Linux Mint 22
+ system   x86_64, linux-gnu
+ ui       X11
+ language zh_CN:zh
+ collate  zh_CN.UTF-8
+ ctype    zh_CN.UTF-8
+ tz       Asia/Shanghai
+ date     2024-09-04
+ pandoc   NA (via rmarkdown)
+
+─ Packages ───────────────────────────────────────────────────────────────────
+ package           * version date (UTC) lib source
+ askpass             1.2.0   2023-09-03 [1] CRAN (R 4.4.1)
+ backports           1.5.0   2024-05-23 [1] CRAN (R 4.4.1)
+ base64enc           0.1-3   2015-07-28 [1] CRAN (R 4.4.1)
+ BiocGenerics        0.50.0  2024-04-30 [1] Bioconductor 3.19 (R 4.4.1)
+ bitops              1.0-8   2024-07-29 [1] CRAN (R 4.4.1)
+ broom               1.0.6   2024-05-17 [1] CRAN (R 4.4.1)
+ Cairo               1.6-2   2023-11-28 [1] CRAN (R 4.4.1)
+ callr               3.7.6   2024-03-25 [1] CRAN (R 4.4.1)
+ caTools             1.18.2  2021-03-28 [1] CRAN (R 4.4.1)
+ circlize            0.4.16  2024-02-20 [1] CRAN (R 4.4.1)
+ cli                 3.6.3   2024-06-21 [1] CRAN (R 4.4.1)
+ clue                0.3-65  2023-09-23 [1] CRAN (R 4.4.1)
+ cluster             2.1.6   2023-12-01 [4] CRAN (R 4.4.0)
+ codetools           0.2-20  2024-03-31 [4] CRAN (R 4.4.0)
+ colorspace          2.1-1   2024-07-26 [1] CRAN (R 4.4.1)
+ ComplexHeatmap    * 2.20.0  2024-04-30 [1] Bioconductor 3.19 (R 4.4.1)
+ cowplot           * 1.1.3   2024-01-22 [1] CRAN (R 4.4.1)
+ crayon              1.5.3   2024-06-20 [1] CRAN (R 4.4.1)
+ curl                5.2.2   2024-08-26 [1] CRAN (R 4.4.1)
+ data.table          1.16.0  2024-08-27 [1] CRAN (R 4.4.1)
+ devEMF              4.5     2024-07-26 [1] CRAN (R 4.4.1)
+ digest              0.6.37  2024-08-19 [1] CRAN (R 4.4.1)
+ doParallel          1.0.17  2022-02-07 [1] CRAN (R 4.4.1)
+ dplyr               1.1.4   2023-11-17 [1] CRAN (R 4.4.1)
+ evaluate            0.24.0  2024-06-10 [1] CRAN (R 4.4.1)
+ export              0.3.0   2024-09-02 [1] Github (tomwenseleers/export@9414f69)
+ extrafont         * 0.19    2023-01-18 [1] CRAN (R 4.4.1)
+ extrafontdb         1.0     2012-06-11 [1] CRAN (R 4.4.1)
+ fansi               1.0.6   2023-12-08 [1] CRAN (R 4.4.1)
+ fastmap             1.2.0   2024-05-15 [1] CRAN (R 4.4.1)
+ flextable           0.9.6   2024-05-05 [1] CRAN (R 4.4.1)
+ fontBitstreamVera   0.1.1   2017-02-01 [1] CRAN (R 4.4.1)
+ fontLiberation      0.1.0   2016-10-15 [1] CRAN (R 4.4.1)
+ fontquiver          0.2.1   2017-02-01 [1] CRAN (R 4.4.1)
+ foreach             1.5.2   2022-02-02 [1] CRAN (R 4.4.1)
+ formatR             1.14    2023-01-17 [1] CRAN (R 4.4.1)
+ fs                  1.6.4   2024-04-25 [1] CRAN (R 4.4.1)
+ futile.logger     * 1.4.3   2016-07-10 [1] CRAN (R 4.4.1)
+ futile.options      1.0.1   2018-04-20 [1] CRAN (R 4.4.1)
+ gdtools             0.4.0   2024-08-28 [1] CRAN (R 4.4.1)
+ generics            0.1.3   2022-07-05 [1] CRAN (R 4.4.1)
+ getopt              1.20.4  2023-10-01 [1] CRAN (R 4.4.1)
+ GetoptLong          1.0.5   2020-12-15 [1] CRAN (R 4.4.1)
+ ggplot2           * 3.5.1   2024-04-23 [1] CRAN (R 4.4.1)
+ ggplotify         * 0.1.2   2023-08-09 [1] CRAN (R 4.4.1)
+ GlobalOptions       0.1.2   2020-06-10 [1] CRAN (R 4.4.1)
+ glue                1.7.0   2024-01-09 [1] CRAN (R 4.4.1)
+ gplots              3.1.3.1 2024-02-02 [1] CRAN (R 4.4.1)
+ gridGraphics        0.5-1   2020-12-13 [1] CRAN (R 4.4.1)
+ gtable              0.3.5   2024-04-22 [1] CRAN (R 4.4.1)
+ gtools              3.9.5   2023-11-20 [1] CRAN (R 4.4.1)
+ hiplotlib         * 0.2.1-2 2024-09-02 [1] Github (hiplot/hiplotlib@5cb6d31)
+ htmltools           0.5.8.1 2024-04-04 [1] CRAN (R 4.4.1)
+ htmlwidgets         1.6.4   2023-12-06 [1] CRAN (R 4.4.1)
+ httr                1.4.7   2023-08-15 [1] CRAN (R 4.4.1)
+ IRanges             2.38.1  2024-07-03 [1] Bioconductor 3.19 (R 4.4.1)
+ iterators           1.0.14  2022-02-05 [1] CRAN (R 4.4.1)
+ jsonlite            1.8.8   2023-12-04 [1] CRAN (R 4.4.1)
+ KernSmooth          2.23-24 2024-05-17 [4] CRAN (R 4.4.0)
+ knitr               1.48    2024-07-07 [1] CRAN (R 4.4.1)
+ labeling            0.4.3   2023-08-29 [1] CRAN (R 4.4.1)
+ lambda.r            1.2.4   2019-09-18 [1] CRAN (R 4.4.1)
+ lattice             0.22-6  2024-03-20 [4] CRAN (R 4.4.1)
+ lazyeval            0.2.2   2019-03-15 [1] CRAN (R 4.4.1)
+ lifecycle           1.0.4   2023-11-07 [1] CRAN (R 4.4.1)
+ magick              2.8.4   2024-07-14 [1] CRAN (R 4.4.1)
+ magrittr            2.0.3   2022-03-30 [1] CRAN (R 4.4.1)
+ Matrix              1.7-0   2024-04-26 [4] CRAN (R 4.4.0)
+ matrixStats         1.3.0   2024-04-11 [1] CRAN (R 4.4.1)
+ munsell             0.5.1   2024-04-01 [1] CRAN (R 4.4.1)
+ officer             0.6.6   2024-05-05 [1] CRAN (R 4.4.1)
+ openssl             2.2.1   2024-08-16 [1] CRAN (R 4.4.1)
+ openxlsx          * 4.2.7   2024-08-30 [1] CRAN (R 4.4.1)
+ optparse            1.7.5   2024-04-16 [1] CRAN (R 4.4.1)
+ pacman              0.5.1   2019-03-11 [1] CRAN (R 4.4.1)
+ patchwork         * 1.2.0   2024-01-08 [1] CRAN (R 4.4.1)
+ pillar              1.9.0   2023-03-22 [1] CRAN (R 4.4.1)
+ pkgconfig           2.0.3   2019-09-22 [1] CRAN (R 4.4.1)
+ plotly              4.10.4  2024-01-13 [1] CRAN (R 4.4.1)
+ png                 0.1-8   2022-11-29 [1] CRAN (R 4.4.1)
+ processx            3.8.4   2024-03-16 [1] CRAN (R 4.4.1)
+ ps                  1.7.7   2024-07-02 [1] CRAN (R 4.4.1)
+ purrr               1.0.2   2023-08-10 [1] CRAN (R 4.4.1)
+ R.methodsS3       * 1.8.2   2022-06-13 [1] CRAN (R 4.4.1)
+ R.oo              * 1.26.0  2024-01-24 [1] CRAN (R 4.4.1)
+ R.utils           * 2.12.3  2023-11-18 [1] CRAN (R 4.4.1)
+ R6                  2.5.1   2021-08-19 [1] CRAN (R 4.4.1)
+ ragg                1.3.2   2024-05-15 [1] CRAN (R 4.4.1)
+ RColorBrewer        1.1-3   2022-04-03 [1] CRAN (R 4.4.1)
+ Rcpp                1.0.13  2024-07-17 [1] CRAN (R 4.4.1)
+ reticulate          1.38.0  2024-06-19 [1] CRAN (R 4.4.1)
+ rgl                 1.3.1   2024-03-05 [1] CRAN (R 4.4.1)
+ rjson               0.2.22  2024-08-20 [1] CRAN (R 4.4.1)
+ rlang               1.1.4   2024-06-04 [1] CRAN (R 4.4.1)
+ rmarkdown           2.28    2024-08-17 [1] CRAN (R 4.4.1)
+ Rttf2pt1            1.3.12  2023-01-22 [1] CRAN (R 4.4.1)
+ rvg                 0.3.4   2024-08-27 [1] CRAN (R 4.4.1)
+ S4Vectors           0.42.1  2024-07-03 [1] Bioconductor 3.19 (R 4.4.1)
+ scales              1.3.0   2023-11-28 [1] CRAN (R 4.4.1)
+ sessioninfo         1.2.2   2021-12-06 [1] CRAN (R 4.4.1)
+ shape               1.4.6.1 2024-02-23 [1] CRAN (R 4.4.1)
+ stargazer           5.2.3   2022-03-04 [1] CRAN (R 4.4.1)
+ stringi             1.8.4   2024-05-06 [1] CRAN (R 4.4.1)
+ stringr             1.5.1   2023-11-14 [1] CRAN (R 4.4.1)
+ systemfonts         1.1.0   2024-05-15 [1] CRAN (R 4.4.1)
+ textshaping         0.4.0   2024-05-24 [1] CRAN (R 4.4.1)
+ tibble              3.2.1   2023-03-20 [1] CRAN (R 4.4.1)
+ tidyr               1.3.1   2024-01-24 [1] CRAN (R 4.4.1)
+ tidyselect          1.2.1   2024-03-11 [1] CRAN (R 4.4.1)
+ utf8                1.2.4   2023-10-22 [1] CRAN (R 4.4.1)
+ uuid                1.2-1   2024-07-29 [1] CRAN (R 4.4.1)
+ vctrs               0.6.5   2023-12-01 [1] CRAN (R 4.4.1)
+ VennDiagram       * 1.7.3   2022-04-12 [1] CRAN (R 4.4.1)
+ viridisLite         0.4.2   2023-05-02 [1] CRAN (R 4.4.1)
+ webshot             0.5.5   2023-06-26 [1] CRAN (R 4.4.1)
+ withr               3.0.1   2024-07-31 [1] CRAN (R 4.4.1)
+ xfun                0.47    2024-08-17 [1] CRAN (R 4.4.1)
+ xml2                1.3.6   2023-12-04 [1] CRAN (R 4.4.1)
+ xtable              1.8-4   2019-04-21 [1] CRAN (R 4.4.1)
+ yulab.utils         0.1.7   2024-08-26 [1] CRAN (R 4.4.1)
+ zip                 2.3.1   2024-01-27 [1] CRAN (R 4.4.1)
+
+ [1] /home/lujunjie16/R/x86_64-pc-linux-gnu-library/4.4
+ [2] /usr/local/lib/R/site-library
+ [3] /usr/lib/R/site-library
+ [4] /usr/lib/R/library
+
+──────────────────────────────────────────────────────────────────────────────

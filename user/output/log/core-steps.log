@@ -1,0 +1,73 @@
+$Set1
+ [1] "ACAP3"     "AGRN"      "ATAD3A"    "ATAD3B"    "ATAD3C"    "C1orf170" 
+ [7] "C1orf233"  "C1orf86"   "CCDC27"    "CDK11B"    "CICP27"    "CICP3"    
+[13] "DDX11L1"   "FAM138A"   "FAM213B"   "FAM87B"    "GLTPD1"    "GNB1"     
+[19] "HES4"      "HES5"      "ISG15"     "LINC00115" "LINC01128" "MIR200A"  
+[25] "MIR200B"   "MIR429"    "MMP23B"    "MND2P28"   "MRPL20"    "MXRA8"    
+[31] "OR4G4P"    "PANK4"     "PEX10"     "PLCH2"     "PRDM16"    "PUSL1"    
+[37] "SCNN1D"    "SDF4"      "SKI"       "SSU72"     "TAS1R3"    "TMEM52"   
+[43] "TNFRSF4"   "TP73"      "TTLL10"    "UBE2J2"    "VWA1"      "WASH7P"   
+[49] "WBP1LP6"   "WBP1LP7"  
+
+$Set2
+ [1] "AGRN"      "ANKRD65"   "ARHGEF16"  "ATAD3B"    "AURKAIP1"  "C1orf170" 
+ [7] "C1orf233"  "C1orf86"   "CALML6"    "CCNL2"     "CDK11B"    "CICP7"    
+[13] "DDX11L1"   "DVL1"      "FAM132A"   "FAM138A"   "FAM213B"   "FAM87B"   
+[19] "GABRD"     "HES4"      "HES5"      "ISG15"     "KLHL17"    "LINC00982"
+[25] "MATP8P1"   "MEGF6"     "MIB2"      "MIR200A"   "MIR429"    "MMP23A"   
+[31] "MMP23B"    "MND2P28"   "NADK"      "NOC2L"     "OR4F16"    "OR4F5"    
+[37] "OR4G11P"   "OR4G4P"    "PLEKHN1"   "RN7SL657P" "RNF223"    "SAMD11"   
+[43] "SCNN1D"    "SDF4"      "SKI"       "SLC35E2"   "SLC35E2B"  "SMIM1"    
+[49] "TMEM240"   "TMEM52"    "TNFRSF14"  "TNFRSF18"  "TNFRSF4"   "TPRG1L"   
+[55] "TTC34"     "UBE2J2"    "VWA1"      "WASH7P"    "WBP1LP6"   "WBP1LP7"  
+
+$Set3
+ [1] "ACTRT2"    "ANKRD65"   "ARHGEF16"  "ATAD3A"    "ATAD3B"    "ATAD3C"   
+ [7] "AURKAIP1"  "B3GALT6"   "C1orf159"  "C1orf170"  "C1orf233"  "C1orf86"  
+[13] "CCDC27"    "CDK11A"    "CICP27"    "CICP3"     "CICP7"     "CPSF3L"   
+[19] "DDX11L1"   "DVL1"      "FAM132A"   "FAM213B"   "FAM41C"    "FAM87B"   
+[25] "GABRD"     "GNB1"      "HES4"      "HES5"      "ISG15"     "LINC00115"
+[31] "LINC00982" "LINC01128" "MATP8P1"   "MEGF6"     "MIB2"      "MIR200A"  
+[37] "MIR200B"   "MIR429"    "MIR551A"   "MMP23B"    "MND2P28"   "MRPL20"   
+[43] "MXRA8"     "NOC2L"     "OR4F16"    "OR4F29"    "OR4F5"     "OR4G11P"  
+[49] "PLCH2"     "PLEKHN1"   "PRDM16"    "RER1"      "RNF223"    "SAMD11"   
+[55] "SCNN1D"    "SDF4"      "SKI"       "SLC35E2B"  "TAS1R3"    "TMEM240"  
+[61] "TMEM52"    "TMEM88B"   "TNFRSF14"  "TNFRSF18"  "TP73"      "TTLL10"   
+[67] "UBE2J2"    "VWA1"      "WASH7P"    "WRAP73"   
+
+$Set4
+ [1] "ACAP3"     "AGRN"      "ATAD3A"    "ATAD3B"    "ATAD3C"    "AURKAIP1" 
+ [7] "B3GALT6"   "C1orf159"  "C1orf222"  "C1orf86"   "CICP7"     "DDX11L1"  
+[13] "GABRD"     "GNB1"      "HES4"      "ISG15"     "LINC00115" "LINC00982"
+[19] "MATP6P1"   "MIB2"      "MIR200B"   "MIR551A"   "MMP23B"    "MND2P28"  
+[25] "MORN1"     "MRPL20"    "MXRA8"     "NADK"      "OR4F16"    "OR4F29"   
+[31] "OR4G11P"   "PANK4"     "RER1"      "SAMD11"    "TMEM52"    "TPRG1L"   
+[37] "TTC34"     "UBE2J2"    "WBP1LP7"   "WRAP73"   
+
+$Set5
+ [1] "ACAP3"     "ACTRT2"    "AGRN"      "ANKRD65"   "ARHGEF16"  "ATAD3A"   
+ [7] "ATAD3B"    "ATAD3C"    "AURKAIP1"  "B3GALT6"   "C1orf170"  "C1orf222" 
+[13] "C1orf233"  "C1orf86"   "CALML6"    "CCDC27"    "CDK11A"    "CICP27"   
+[19] "CICP3"     "CICP7"     "DDX11L1"   "FAM132A"   "FAM138A"   "FAM213B"  
+[25] "FAM41C"    "FAM87B"    "GLTPD1"    "GNB1"      "HES4"      "HES5"     
+[31] "ISG15"     "KLHL17"    "LINC00982" "LINC01128" "MATP8P1"   "MIB2"     
+[37] "MIR200A"   "MIR200B"   "MIR429"    "MIR551A"   "MMEL1"     "MMP23B"   
+[43] "MND1P23"   "MND2P28"   "MORN1"     "MRPL20"    "NADK"      "OR4F16"   
+[49] "OR4F29"    "OR4F5"     "OR4G4P"    "PANK4"     "PLCH2"     "PLEKHN1"  
+[55] "PRKCZ"     "PUSL1"     "RER1"      "RNF223"    "SAMD11"    "SCNN1D"   
+[61] "SDF4"      "SKI"       "SLC35E2"   "SLC35E2B"  "SMIM1"     "SSU72"    
+[67] "TAS1R3"    "TMEM240"   "TNFRSF14"  "TNFRSF18"  "TNFRSF4"   "TPRG1L"   
+[73] "TTC34"     "TTLL10"    "TUBB8P11"  "UBE2J2"    "WASH7P"    "WBP1LP6"  
+[79] "WBP1LP7"   "WRAP73"   
+
+$Set6
+[1] "ANKRD65"   "ATAD3C"    "C1orf222"  "FAM132A"   "LINC01128" "MIR200B"  
+[7] "MIR551A"   "RER1"     
+
+$Set7
+[1] "FAM132A"   "MND2P28"   "OR4G4P"    "PANK4"     "RN7SL657P" "SSU72"    
+[7] "WBP1LP6"  
+
+$Set8
+[1] "ARHGEF16" "C1orf170" "CDK11B"   "MMP23B"   "TMEM52"   "TNFRSF4"  "WASH7P"  
+
