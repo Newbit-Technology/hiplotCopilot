@@ -1,18 +1,18 @@
-import os
 import hashlib
+import os
 import sys
 import time
 
-from tqdm import tqdm
 from langchain.document_loaders.markdown import UnstructuredMarkdownLoader
 from langchain.text_splitter import TokenTextSplitter
+from tqdm import tqdm
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 from common.hiMilvus import hiplot_doc_collection
 from common.hiTowhee import embedding_pipeline
 from common.print_color import print_green
-from common.tools import delete_dir, git_clone_path
+from common.tools import git_clone_path
 
 git_url_doc = "https://github.com/hiplot/docs.git"
 docs_directory = "docs"
@@ -43,15 +43,11 @@ def split_and_store_md(filepath: str):
 def store_md(content: str):
     content_byte = content.encode("utf-8")
     hash_value = hashlib.md5(content_byte).hexdigest()
-    res = hiplot_doc_collection.query(f"id == \"{hash_value}\"")
+    res = hiplot_doc_collection.query(f'id == "{hash_value}"')
     if len(res) != 0:
         return
     embedding = embedding_pipeline(content).get()
-    entity = [
-        [hash_value],
-        [embedding[0]],
-        [content]
-    ]
+    entity = [[hash_value], [embedding[0]], [content]]
     hiplot_doc_collection.insert(entity)
 
 

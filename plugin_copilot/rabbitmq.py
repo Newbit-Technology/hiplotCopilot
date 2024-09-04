@@ -1,11 +1,13 @@
-import os
-import pika
 import json
+import os
+
+import pika
+
 from common.print_color import print_green, print_red
 
 
 class RabbitMQClient:
-    def __init__(self, username, password, host='127.0.0.1', queue_name='common'):
+    def __init__(self, username, password, host="127.0.0.1", queue_name="common"):
         self.rabbitmq_credentials = pika.PlainCredentials(username=username, password=password)
         self.rabbitmq_parameters = pika.ConnectionParameters(host=host, credentials=self.rabbitmq_credentials)
         self.connection = None
@@ -20,7 +22,7 @@ class RabbitMQClient:
         self.channel = self.connection.channel()
         self.channel.queue_declare(queue=self.queue_name, durable=True)
 
-    def send_task(self,task_id , module_name: str, plugin_name: str, file_nums=1):
+    def send_task(self, task_id, module_name: str, plugin_name: str, file_nums=1):
         """发送任务到指定队列"""
         # 设置任务文件的根目录
         prefix = os.path.abspath("../user/")
@@ -46,7 +48,7 @@ class RabbitMQClient:
             "module": module_name,
             "tool": plugin_name,
             "ID": task_id,
-            "Name": "common"
+            "Name": "common",
         }
 
         # 将任务消息转换为JSON格式的字符串
@@ -54,7 +56,9 @@ class RabbitMQClient:
 
         # 发送消息到队列中
         try:
-            self.channel.basic_publish(exchange="", routing_key=self.queue_name, body=message_json.encode(encoding="utf-8"))
+            self.channel.basic_publish(
+                exchange="", routing_key=self.queue_name, body=message_json.encode(encoding="utf-8")
+            )
         except:
             print_red(f"任务{task_id}提交失败")
             self.close_connection()

@@ -2,7 +2,7 @@ from langchain import PromptTemplate
 from langchain_core.prompts.chat import MessagePromptTemplateT
 
 # {sentence}
-describe_image:MessagePromptTemplateT = PromptTemplate.from_template(
+describe_image: MessagePromptTemplateT = PromptTemplate.from_template(
     """
 You will be provided with an image from a bioinformatics paper and its corresponding caption. Your task is to generate a short description of the image based on the provided information. Please include the following elements in your description:
 
@@ -19,7 +19,7 @@ Example Output:
     """
 )
 
-explain_plug:MessagePromptTemplateT = PromptTemplate.from_template(
+explain_plug: MessagePromptTemplateT = PromptTemplate.from_template(
     """
 The purpose of this drawing plugin and the files that need to be provided are explained through the following three documents.
 ui.json
@@ -39,7 +39,7 @@ Independently start a new line to explain what data needs to be input and in wha
     """
 )
 
-extract_params:MessagePromptTemplateT = PromptTemplate.from_template(
+extract_params: MessagePromptTemplateT = PromptTemplate.from_template(
     """
 Help me extract the parameters image_description and image_filepath from the sentence below 
 {sentence} 
@@ -47,9 +47,8 @@ You only need to return a JSON object.
     """
 )
 
-
 # {json_data}
-explain_title:MessagePromptTemplateT = PromptTemplate.from_template(
+explain_title: MessagePromptTemplateT = PromptTemplate.from_template(
     """
 I have a JSON data structure where 'title' is an array representing the column headers of the data, and 'data' is a two-dimensional array where each one-dimensional array represents a row of data corresponding to the headers. Please help me explain the possible meanings of each header based on the data content. 
 {json_data} 
@@ -58,7 +57,7 @@ You only need to return a JSON object, where the key represents the header and t
 )
 
 # {description_json} {input_json}
-select_params:MessagePromptTemplateT = PromptTemplate.from_template(
+select_params: MessagePromptTemplateT = PromptTemplate.from_template(
     """
 I have two sets of JSON data. The first set contains variable names and their descriptions that can be chosen from, and the second set contains variable names and their descriptions that need to be input. Help me select appropriate values from the first set of data to fill in each object in the second set of data. 
 {description_json} 
@@ -67,7 +66,7 @@ You only need to return a JSON object, where the key represents the variable nam
     """
 )
 
-select_extra_params:MessagePromptTemplateT = PromptTemplate.from_template(
+select_extra_params: MessagePromptTemplateT = PromptTemplate.from_template(
     """
 Please fill in each extra option in JSON format according to the image, option description and the data top3, so that the options correspond to the features of the image.
 
@@ -92,7 +91,7 @@ Pay attention to details such as color, and do not output default parameters!
 )
 
 # {image_type} {documents}
-get_plugin_name:MessagePromptTemplateT = PromptTemplate.from_template(
+get_plugin_name: MessagePromptTemplateT = PromptTemplate.from_template(
     """
 According to the description below, extract a plugin from the documents that matches the description. If none is found, return None.  
 description:  

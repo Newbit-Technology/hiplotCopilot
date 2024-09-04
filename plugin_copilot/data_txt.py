@@ -42,4 +42,3 @@ def get_data_top(path: str, line_num: int = 3):
 
     # 返回读取数据的JSON格式字符串
     return input_data.json_format()
-

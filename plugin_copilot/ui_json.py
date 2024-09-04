@@ -1,5 +1,7 @@
 class TableArg:
-    en_description: str = "This field represents {} and requires selecting the appropriate field from the data table as its value"
+    en_description: str = (
+        "This field represents {} and requires selecting the appropriate field from the data table as its value"
+    )
     zh_description: str = "这个字段表示{}，需要从数据表中选择合适的字段作为其值"
 
     def __init__(self, arg: dict):
@@ -22,7 +24,8 @@ class ExtraArg:
     def __init__(self, name: str, data: dict, data_json: dict):
         self.name = name
         self.data = data
-        self.data_json = data_json['params']['config']['extra']
+        self.data_json = data_json["params"]["config"]["extra"]
+
     def get_prompt(self) -> str:
         label = self.data["label"]
         items = ""
@@ -36,8 +39,9 @@ class ExtraArg:
             items = f"The options for this parameter are as follows.{self.data["items"]}"
 
         if "min" in self.data or "max" in self.data:
-            range = "The value range of this parameter is {}".format(self.data["min"] if "min" in self.data else "-inf") + " to {}".format(self.data["max"] if "max" in self.data else "inf")
-
+            range = "The value range of this parameter is {}".format(
+                self.data["min"] if "min" in self.data else "-inf"
+            ) + " to {}".format(self.data["max"] if "max" in self.data else "inf")
 
         return f"{description}\n{items}\n{range}\n"
 
@@ -57,7 +61,7 @@ def get_table_required(ui_json) -> dict:
 
     # 从 ui_json 中获取数据参数
     data_arg = ui_json.get("dataArg", {})
-    for table_name,table_args in data_arg.items():
+    for table_name, table_args in data_arg.items():
         for arg in table_args:
             # 创建 TableArg 对象
             table_arg = TableArg(arg)
@@ -73,9 +77,7 @@ def get_table_required(ui_json) -> dict:
     return table_required
 
 
-
-
-def get_extra_required(ui_json,data_json) -> dict:
+def get_extra_required(ui_json, data_json) -> dict:
     """
     获取UI配置中必要的额外参数。
 
@@ -96,10 +98,9 @@ def get_extra_required(ui_json,data_json) -> dict:
     # 遍历"extra"字典中的每一项
     for k, v in extra.items():
         # 创建ExtraArg实例，用于进一步处理当前项
-        extra_arg = ExtraArg(k, v,data_json)
+        extra_arg = ExtraArg(k, v, data_json)
         # 如果当前项是必需的，将其提示信息添加到extra_required字典中
         extra_required[k] = extra_arg.get_prompt()
 
     # 返回存储了必要额外参数的字典
     return extra_required
-
